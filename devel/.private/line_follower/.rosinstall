@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/ajaya/gazebo_tu/devel/.private/line_follower/setup.sh

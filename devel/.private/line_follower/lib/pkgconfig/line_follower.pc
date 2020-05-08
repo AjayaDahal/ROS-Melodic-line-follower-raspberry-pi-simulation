@@ -1,0 +1,8 @@
+prefix=/home/ajaya/gazebo_tu/devel/.private/line_follower
+
+Name: line_follower
+Description: Description of line_follower
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/home/ajaya/gazebo_tu/devel/.private/linebot_description
+
+Name: linebot_description
+Description: Description of linebot_description
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

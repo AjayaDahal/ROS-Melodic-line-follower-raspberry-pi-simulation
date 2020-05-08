@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="linebot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find linebot_description)/robots/linebot.gazebo.xacro" />
+
+    <xacro:include filename="$(find linebot_description)/materials/materials.xacro" />
+
+    <link name="base_footprint"/>
+
+    <joint name="base_joint" type="fixed">
+      <origin xyz="0 0 0.05" rpy="0 0 0" />
+      <parent link="base_footprint"/>
+      <child link="base_link" />
+    </joint>
+
+    <link name="base_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://linebot_description/meshes/base.dae" scale="0.1 0.1 0.1"/>
+        </geometry>
+        <origin xyz="-0.052 -0.04 0.043" rpy="0 0 0"/>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://linebot_description/meshes/base.dae" scale="0.1 0.1 0.1"/>
+        </geometry>
+        <origin xyz="-0.052 -0.04 0.043" rpy="0 0 0"/>
+      </collision>
+      <inertial>
+        <origin xyz="0.0 0 0."/>
+        <mass value="0.5"/>
+        <inertia ixx="0.01" ixy="0.0" ixz="0.0"
+                 iyy="0.01" iyz="0.0"
+                 izz="0.03" />
+      </inertial>
+    </link>
+
+    <joint name="second_level_joint" type="fixed">
+      <origin xyz="0 0 0.068" rpy="0 0 0" />
+      <parent link="base_link"/>
+      <child link="base_second_link" />
+    </joint>
+    <link name="base_second_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://linebot_description/meshes/base.dae" scale="0.1 0.1 0.1"/>
+        </geometry>
+        <origin xyz="-0.052 -0.04 0.0" rpy="0 0 0"/>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://linebot_description/meshes/base.dae" scale="0.1 0.1 0.1"/>
+        </geometry>
+        <origin xyz="-0.052 -0.04 0.0" rpy="0 0 0"/>
+      </collision>
+    </link>
+
+    <joint name="mcu_joint" type="fixed">
+      <origin xyz="0.002 0.012 0.073" rpy="0 0 0" />
+      <parent link="base_link"/>
+      <child link="mcu_link" />
+    </joint>
+    <link name="mcu_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://linebot_description/meshes/rasp.dae" scale="0.014 0.014 0.014"/>
+        </geometry>
+        <origin xyz="0.09 -0.125 0" rpy="0 0 1.57"/>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://linebot_description/meshes/rasp.dae" scale="0.014 0.014 0.014"/>
+        </geometry>
+        <origin xyz="0.09 -0.125 0" rpy="0 0 1.57"/>
+      </collision>
+    </link>
+
+   <joint name="mcu_joint_1" type="fixed">
+      <origin xyz="0.002 0.012 0.083" rpy="0 0 0" />
+      <parent link="base_link"/>
+      <child link="mcu_link_1" />
+    </joint>
+    <link name="mcu_link_1">
+      <visual>
+        <geometry>
+          <mesh filename="package://linebot_description/meshes/rasp.dae" scale="0.014 0.014 0.014"/>
+        </geometry>
+        <origin xyz="0.09 -0.125 0" rpy="0 0 1.57"/>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://linebot_description/meshes/rasp.dae" scale="0.014 0.014 0.014"/>
+        </geometry>
+        <origin xyz="0.09 -0.125 0" rpy="0 0 1.57"/>
+      </collision>
+    </link>
+
+
+   <joint name="stand_mcu1_joint" type="fixed">
+      <origin xyz="0.002 ${0.05/2} 0.078" rpy="0 0 1.57" />
+      <parent link="base_link"/>
+      <child link="stand_mcu1_link" />
+    </joint>
+    <link name="stand_mcu1_link">
+      <visual>
+        <geometry>
+         <cylinder length="0.01" radius="0.001"/>
+        </geometry>
+        <origin rpy="0.0 0 0" xyz="0 0 0.0"/>
+      </visual>
+      <collision>
+        <geometry>
+         <cylinder length="0.01" radius="0.001"/>
+        </geometry>
+        <origin rpy="0.0 0 0" xyz="0 0 0.0"/>
+      </collision>
+    </link>
+
+   <joint name="stand_mcu2_joint" type="fixed">
+      <origin xyz="0.002 -${0.0225/2} 0.078" rpy="0 0 1.57" />
+      <parent link="base_link"/>
+      <child link="stand_mcu2_link" />
+    </joint>
+    <link name="stand_mcu2_link">
+      <visual>
+        <geometry>
+         <cylinder length="0.01" radius="0.001"/>
+        </geometry>
+        <origin rpy="0.0 0 0" xyz="0 0 0.0"/>
+      </visual>
+      <collision>
+        <geometry>
+         <cylinder length="0.01" radius="0.001"/>
+        </geometry>
+        <origin rpy="0.0 0 0" xyz="0 0 0.0"/>
+      </collision>
+    </link>
+
+
+   <joint name="stand_mcu3_joint" type="fixed">
+      <origin xyz="0.025 ${0.05/2} 0.078" rpy="0 0 1.57" />
+      <parent link="base_link"/>
+      <child link="stand_mcu3_link" />
+    </joint>
+    <link name="stand_mcu3_link">
+      <visual>
+        <geometry>
+         <cylinder length="0.01" radius="0.001"/>
+        </geometry>
+        <origin rpy="0.0 0 0" xyz="0 0 0.0"/>
+      </visual>
+      <collision>
+        <geometry>
+         <cylinder length="0.01" radius="0.001"/>
+        </geometry>
+        <origin rpy="0.0 0 0" xyz="0 0 0.0"/>
+      </collision>
+    </link>
+
+   <joint name="stand_mcu4_joint" type="fixed">
+      <origin xyz="0.025 -${0.0225/2} 0.078" rpy="0 0 1.57" />
+      <parent link="base_link"/>
+      <child link="stand_mcu4_link" />
+    </joint>
+    <link name="stand_mcu4_link">
+      <visual>
+        <geometry>
+         <cylinder length="0.01" radius="0.001"/>
+        </geometry>
+        <origin rpy="0.0 0 0" xyz="0 0 0.0"/>
+      </visual>
+      <collision>
+        <geometry>
+         <cylinder length="0.01" radius="0.001"/>
+        </geometry>
+        <origin rpy="0.0 0 0" xyz="0 0 0.0"/>
+      </collision>
+    </link>
+
+    <joint name="camera_joint" type="fixed">
+      <origin xyz="0.049 -0.003 0.075" rpy="0 0.21 0" />
+      <parent link="base_link"/>
+      <child link="camera_link" />
+    </joint>
+    <link name="camera_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://linebot_description/meshes/camera.dae" scale="0.4 0.4 0.4"/>
+        </geometry>
+        <origin xyz="0.0 0 0" rpy="0 0 0"/>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://linebot_description/meshes/camera.dae" scale="0.4 0.4 0.4"/>
+        </geometry>
+        <origin xyz="0.0 0 0" rpy="0 0 0"/>
+      </collision>
+    </link>
+
+
+    <joint name="batery_joint" type="fixed">
+      <origin xyz="0.12 0.02 0.043" rpy="0 0 1.57" />
+      <parent link="base_link"/>
+      <child link="batery_link" />
+    </joint>
+    <link name="batery_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://linebot_description/meshes/battery.dae" scale="1.30 0.60 0.60"/>
+        </geometry>
+        <origin xyz="0 0.45 0.005" rpy="1.57 0 1.57"/>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://linebot_description/meshes/battery.dae" scale="1.30 0.60 0.60"/>
+        </geometry>
+        <origin xyz="0 0.45 0.005" rpy="1.57 0 1.57"/>
+      </collision>
+    </link>
+
+
+
+   <joint name="stand_1_joint" type="fixed">
+      <origin xyz="0.05 ${0.0825/2} 0.058" rpy="0 0 1.57" />
+      <parent link="base_link"/>
+      <child link="stand_1_link" />
+    </joint>
+    <link name="stand_1_link">
+      <visual>
+        <geometry>
+         <cylinder length="0.020" radius="0.003"/>
+        </geometry>
+        <origin rpy="0.0 0 0" xyz="0 0 0.0"/>
+      </visual>
+      <collision>
+        <geometry>
+         <cylinder length="0.020" radius="0.003"/>
+        </geometry>
+        <origin rpy="0.0 0 0" xyz="0 0 0.0"/>
+      </collision>
+    </link>
+
+   <joint name="stand_2_joint" type="fixed">
+      <origin xyz="0.05 -${0.0525/2} 0.058" rpy="0 0 1.57" />
+      <parent link="base_link"/>
+      <child link="stand_2_link" />
+    </joint>
+    <link name="stand_2_link">
+      <visual>
+        <geometry>
+         <cylinder length="0.020" radius="0.003"/>
+        </geometry>
+        <origin rpy="0.0 0 0" xyz="0 0 0.0"/>
+      </visual>
+      <collision>
+        <geometry>
+         <cylinder length="0.020" radius="0.003"/>
+        </geometry>
+        <origin rpy="0.0 0 0" xyz="0 0 0.0"/>
+      </collision>
+    </link>
+
+    <joint name="wheel_left_joint" type="continuous">
+      <parent link="base_link"/>
+      <child link="wheel_left_link"/>
+      <origin xyz="0.015 ${0.0825/2} 0.030" rpy="-1.57 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+    <link name="wheel_left_link">
+      <collision>
+        <geometry>
+         <cylinder length="0.020" radius="0.023"/>
+        </geometry>
+        <origin rpy="0.0 0.0 0" xyz="0 0 0.01"/>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <!-- cylinder length="0.0206" radius="0.0550"/-->
+          <!--cylinder length="0.20" radius="0.26"/-->
+          <mesh filename="package://linebot_description/meshes/wheel.dae" scale="0.80 0.80 0.80"/>
+        </geometry>
+        <origin rpy="0.0 0 0" xyz="0 0 0"/>
+      </visual>
+
+      <inertial>
+        <mass value="0.1" />
+        <origin rpy="0.0 0.0 0" xyz="0 0 0.01"/>
+        <inertia ixx="1.65583333333e-05" ixy="0.0" ixz="0.0"
+                 iyy="1.65583333333e-05" iyz="0.0"
+                 izz="2.645e-05" />
+      </inertial>
+
+    </link>
+
+    <joint name="wheel_right_joint" type="continuous">
+      <parent link="base_link"/>
+      <child link="wheel_right_link"/>
+      <origin xyz="0.015 -${0.1125/2} 0.030" rpy="-1.57 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+    <link name="wheel_right_link">
+      <collision>
+        <geometry>
+         <cylinder length="0.020" radius="0.023"/>
+        </geometry>
+        <origin rpy="0.0 0 0" xyz="0 0 0.0195"/>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh filename="package://linebot_description/meshes/wheel.dae" scale="0.80 0.80 0.80"/>
+        </geometry>
+        <origin rpy="0.0 0 0" xyz="0 0 0"/>
+      </visual>
+
+      <inertial>
+        <mass value="0.1" />
+        <origin rpy="0.0 0 0" xyz="0 0 0.0195"/>
+        <inertia ixx="1.65583333333e-05" ixy="0.0" ixz="0.0"
+                 iyy="1.65583333333e-05" iyz="0.0"
+                 izz="2.645e-05" />
+      </inertial>
+
+    </link>
+
+    <joint name="caster_back_joint" type="fixed">
+      <parent link="base_link"/>
+      <child link="caster_back_link"/>
+      <origin xyz="-0.04 0.01 0.026" rpy="0 0 0"/>
+    </joint>
+    <link name="caster_back_link">
+      <collision>
+        <geometry>
+          <!-- cylinder length="0.05" radius="0.19"/-->
+          <sphere radius="0.019"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+      </collision>
+      <visual>
+        <geometry>
+          <!--cylinder length="0.05" radius="0.19"/-->
+          <sphere radius="0.019"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+      </visual>
+      <!--
+      <inertial>
+        <mass value="0.1" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.001023539" ixy="0.0" ixz="0.0"
+                 iyy="0.001023539" iyz="0.0"
+                 izz="0.001023539" />
+      </inertial>
+      -->
+    </link>
+
+
+
+   <joint name="stand_3_joint" type="fixed">
+      <origin xyz="-0.04 ${0.0825/2} 0.058" rpy="0 0 1.57" />
+      <parent link="base_link"/>
+      <child link="stand_3_link" />
+    </joint>
+    <link name="stand_3_link">
+      <visual>
+        <geometry>
+         <cylinder length="0.020" radius="0.003"/>
+        </geometry>
+        <origin rpy="0.0 0 0" xyz="0 0 0.0"/>
+      </visual>
+      <collision>
+        <geometry>
+         <cylinder length="0.020" radius="0.003"/>
+        </geometry>
+        <origin rpy="0.0 0 0" xyz="0 0 0.0"/>
+      </collision>
+    </link>
+
+   <joint name="stand_4_joint" type="fixed">
+      <origin xyz="-0.04 -${0.0525/2} 0.058" rpy="0 0 1.57" />
+      <parent link="base_link"/>
+      <child link="stand_4_link" />
+    </joint>
+    <link name="stand_4_link">
+      <visual>
+        <geometry>
+         <cylinder length="0.020" radius="0.003"/>
+        </geometry>
+        <origin rpy="0.0 0 0" xyz="0 0 0.0"/>
+      </visual>
+      <collision>
+        <geometry>
+         <cylinder length="0.020" radius="0.003"/>
+        </geometry>
+        <origin rpy="0.0 0 0" xyz="0 0 0.0"/>
+      </collision>
+    </link>
+
+
+
+</robot>

@@ -1,0 +1,6 @@
+devel_space: /home/ajaya/gazebo_tu/devel
+install: false
+install_space: /home/ajaya/gazebo_tu/install
+profile: default
+source_space: /home/ajaya/gazebo_tu/src
+workspace: /home/ajaya/gazebo_tu
